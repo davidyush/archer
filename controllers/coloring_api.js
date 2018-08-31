@@ -14,7 +14,7 @@ const saveDir = process.env.NODE_ENV === 'production' ? '../outspace' : '../arch
 exports.getColorings = async (req, res) => {
   const colorings = await Coloring.find()
     .sort({ created: 'desc' });
-    
+
   let shabbat = [], animals = [], hanukkah = [], purim = [], tubi = [], pesach = [], rosh = [];
   colorings.forEach(coloring => {
     if(coloring.tag === 'Шаббат')
@@ -80,6 +80,7 @@ exports.uploadGen = multer(multerOptions).fields([
 ]);
 
 exports.createColoring = async (req, res) => {
+  console.log('req.body coloring',req.body);
   const coloring = await (new Coloring(req.body)).save();
   res.status(200).json({ message: 'created new coloring'});
 }
