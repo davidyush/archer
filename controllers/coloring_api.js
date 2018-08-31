@@ -14,7 +14,8 @@ const saveDir = process.env.NODE_ENV === 'production' ? '../outspace' : '../arch
 exports.getColorings = async (req, res) => {
   const colorings = await Coloring.find()
     .sort({ created: 'desc' });
-  let shabbat = [], animals = [], hanukkah = [], purim = [], tubi = [], pesach = [];
+    
+  let shabbat = [], animals = [], hanukkah = [], purim = [], tubi = [], pesach = [], rosh = [];
   colorings.forEach(coloring => {
     if(coloring.tag === 'Шаббат')
       shabbat.push(coloring);
@@ -28,6 +29,8 @@ exports.getColorings = async (req, res) => {
       tubi.push(coloring);
     else if(coloring.tag === 'Песах')
       pesach.push(coloring);
+    else if(coloring.tag === 'Рош-Ашона')
+      rosh.push(coloring);
   });
 
   res.json({
@@ -36,7 +39,8 @@ exports.getColorings = async (req, res) => {
     hanukkah,
     purim,
     tubi,
-    pesach
+    pesach,
+    rosh
   });
 }
 

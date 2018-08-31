@@ -41,7 +41,7 @@ router.get('/api/getCrosses', catchErrors(crossController.getCrosses));
 router.get('/api/getColorings', catchErrors(coloringController.getColorings));
 
 //user
-router.post('/api/signin', userController.signIn);
+// router.post('/api/signin', userController.signIn);
 router.post('/api/login', catchErrors(userController.logIn));
 router.post('/api/verify', userController.verify);
 
