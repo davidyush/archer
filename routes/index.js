@@ -16,6 +16,10 @@ const coloringController = require('../controllers/coloring_api');
 
 const userController = require('../controllers/user_api');
 
+
+
+const postController2 = require('../controllers/postAPI');
+
 //main app
 router.get('/', (req, res) => {
   res.sendFile('index.html');
@@ -27,7 +31,7 @@ router.get('/admin', (req, res) => {
 });
 
 //api get
-router.get('/api/getPosts/:skip', catchErrors(postController.getPosts));
+router.get('/api/getPosts/:skip', catchErrors(postController2.getPosts));
 router.get('/api/getTeacherPosts', catchErrors(teacherController.getTeacherPosts));
 router.get('/api/getTalePosts', catchErrors(taleController.getTalePosts));
 router.get('/api/getParentPosts', catchErrors(parentController.getParentPosts));
@@ -46,11 +50,17 @@ router.post('/api/login', catchErrors(userController.logIn));
 router.post('/api/verify', userController.verify);
 
 //api create
+// router.post('/api/createPost',
+//   postController.upload,
+//   userController.verify,
+//   catchErrors(postController.resize),
+//   catchErrors(postController.createPost)
+// );
+
 router.post('/api/createPost',
-  postController.upload,
-  userController.verify,
-  catchErrors(postController.resize),
-  catchErrors(postController.createPost)
+  postController2.upload,
+  postController2.resize,
+  catchErrors(postController2.createPost)
 );
 
 router.post('/api/createTale',

@@ -18,7 +18,11 @@ const postSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  photo: String
+  video: {
+    type: String
+  },
+  photo: String,
+  pics: Array
 });
 
 module.exports = mongoose.model('Post', postSchema);

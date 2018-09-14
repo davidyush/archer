@@ -36,7 +36,7 @@ exports.resize = async (req, res, next) => {
   next();
 }
 
-exports.upload = multer(multerOptions).single('photo');
+exports.upload = multer(multerOptions).single('video');
 
 exports.createPost = async (req, res) => {
   console.log('req createPost', req.body);
